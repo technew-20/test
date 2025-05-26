@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
             "@context": "https://schema.org",
             "@type": "Organization",
             "url": "https://railway.app",
-            "logo": "https://telegra.ph/file/4cf337052c09eec06f3e8.jpg"
+            "logo": "colorful"
     }
 
     .button-container {
@@ -32,50 +33,57 @@
     h3 {
       margin-top: -40px;
       opacity: 0;
-      animation: fadeIn 9h forwards;
+      animation: fadeIn 0s forwards;
+      color: black;
     }
+
+    h4 {
+      margin-top: -40px;
+      opacity: 0;
+      animation: fadeIn 7s forwards;
+      color: black;
+    } 
 
     .button {
       width: 140px;
-      height: 40px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 0px 47px;
+      padding: 0px 15px;
       background-color: red;
       border-radius: 10px;
       border: none;
       color: white;
       position: relative;
       cursor: pointer;
-      font-weight: 900;
-      font-size: 11px;
+      font-weight: 700;
       transition-duration: .2s;
       background: linear-gradient(0deg, #000, #272727);
       text-decoration: none;
     }
 
-    
-    footer {
+  footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color:balck; 
-    color: white;
+    background-color: balck; 
+    color: #fff;
     padding: 10px 0;
     text-align: center;
-    font-size: 10px;
+    font-size: 14px;
     
-  }
-    .button:before, .button:after {
+    }
+    
+     .button:before, .button:after {
       content: '';
       position: absolute;
       left: -2px;
       top: -2px;
       border-radius: 10px;
       background: linear-gradient(45deg, #48ff00, #15ff00, #0400ff,#2600ff, #ff0000);
-      background-size: 400%;
+      background-size: 300%;
       width: calc(100% + 4px);
       height: calc(100% + 4px);
       z-index: -1;
@@ -113,14 +121,19 @@
 </head>
 <body>
   <div class="button-container">
-    <h3>CONNECT THIS BOT</h3>
+    <h3>💥WELCOME TO MY WEBSITE💥</h3> <br> <br> <br> <br> <br> 
     <div></div>
-    <a href="https://mani-news-qr.vercel.app/" class="button" target="_blank"> <span>LOGIN WITH QR-CODE</span> </a> <br><br>
-    <a href="https://mani-ofc-pair-code-2024-a39dd47dc981.herokuapp.com/pair" class="button" target="_blank"> <span>LOGIN WITH PAIR-CODE</span> </a> <br>
+    <div class="button-container">
+    <h4>CONNECT THIS BOT</h4> <br> <br>
+    <div></div>
+    <a href="https://mani-news-qr.vercel.app/" class="button" target="_blank"> <span>QR CODE</span> </a> <br> <br>
+    <a href="/pair" class="button" target="_blank"> <span>PAIRING CODE</span> </a> <br> <br>
+    <a href="https://wa.me/94760863952" class="button" target="_blank"> <span>HELP</span> </a> <br> <br>
 
-
-    <footer>MANI OFFICAL © 2024 <span id="currentYear"></span>
+    
+    <footer>MANI-NEWS © 2024 <span id="2024"></span>
     </footer>
   
+     
 </body>
 </html>

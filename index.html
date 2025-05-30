@@ -2,243 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VISPER Pair section</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right top, #f72585, #3a0ca3);
-      min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      align-items: center;
-      padding: 20px;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #111318, #182220, #10171a);
+      background-size: 300% 300%;
+      animation: gradientAnimation 10s ease infinite;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(18px);
-      border-radius: 20px;
-      padding: 40px 30px;
-      max-width: 420px;
-      width: 100%;
-      color: #111827;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      color: white;
+      font-size: 3.5rem;
+      margin-bottom: 40px;
       text-align: center;
-      animation: fadeIn 0.7s ease;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h3 {
-      font-size: 1.8rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: #e2e8f0;
-      font-size: 14px;
-      margin-bottom: 25px;
-    }
-
-    .input-container {
-      display: flex;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    input {
-      flex: 1;
-      padding: 14px;
-      font-size: 16px;
-      border: none;
-      outline: none;
-      color: #111827;
-    }
-
-    button {
-      background: linear-gradient(45deg, #f72585, #7209b7);
-      color: white;
-      padding: 0 20px;
+    .btn {
+      width: 250px;
+      padding: 15px 25px;
+      margin: 10px;
+      background: transparent;
+      border-radius: 25px;
+      border: 2px solid #ffffff;
+      font-size: 18px;
       font-weight: bold;
-      border: none;
-      cursor: pointer;
+      text-transform: uppercase;
+      color: white;
+      text-align: center;
       position: relative;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: linear-gradient(45deg, #f502d4, #3b82f6);
-    }
-
-    button.loading::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 12px;
-      width: 14px;
-      height: 14px;
-      border: 2px solid #fff;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      transform: translateY(-50%);
-    }
-
-    button.loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    @keyframes spin {
-      to {
-        transform: translateY(-50%) rotate(360deg);
-      }
-    }
-
-    .response-area {
-      margin-top: 25px;
-    }
-
-    .code-box {
-      background: #f3f4f6;
-      border-radius: 10px;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 17px;
-      box-shadow: inset 2px 2px 6px #e5e7eb;
-      color: #111827;
-      margin-top: 10px;
-    }
-
-    .copy-btn {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
+      overflow: hidden;
       cursor: pointer;
-      font-size: 14px;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+      z-index: 1;
     }
 
-    .copy-btn:hover {
-      background: #f502d4;
+    .btn span {
+      position: relative;
+      z-index: 2;
     }
 
-    .error {
-      color: #ff4d4d;
-      font-weight: bold;
-      font-size: 14px;
+    /* Shine effect on hover */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      height: 200%;
+      width: 200%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(45deg);
+      transition: all 0.5s;
+      z-index: 2;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 30px 20px;
-      }
+    .btn:hover::before {
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
 
-      h3 {
-        font-size: 1.5rem;
-      }
+    /* Rainbow gradient animation */
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      background: linear-gradient(270deg, #ff00c8, #00ffe5, #ffdd00, #ff0000, #00ff6a, #0099ff);
+      background-size: 1200% 1200%;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      animation: btnGradientAnimation 8s ease infinite;
+    }
 
-      .input-container {
-        flex-direction: column;
-      }
+    .btn:hover::after {
+      opacity: 1;
+    }
 
-      input, button {
-        width: 100%;
-        border-radius: 0;
+    @keyframes btnGradientAnimation {
+      0% {
+        background-position: 0% 50%;
       }
-
-      button {
-        border-top: 1px solid #e5e7eb;
+      50% {
+        background-position: 100% 50%;
       }
-
-      .code-box {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+      100% {
+        background-position: 0% 50%;
       }
     }
+
+    .btn:hover {
+      color: #ffffff;
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
+    }
+
+    .btn:active {
+      filter: brightness(0.9);
+      transform: scale(0.98);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .btn {
+        width: 80%;
+        padding: 12px 20px;
+        font-size: 16px;
+      }
+    }
+
+    @media (min-width: 600px) and (max-width: 1024px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      .btn {
+        width: 220px;
+        padding: 14px 22px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      h1 {
+        font-size: 3.5rem;
+      }
+      .btn {
+        width: 250px;
+        padding: 15px 25px;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h3>Visper MD</h3>
-    <p>Enter your WhatsApp number with country code</p>
+  <button onclick="window.open(`/qr`)" class="btn"><span>QR Code</span></button>
+  <button onclick="window.open(`/pair`)" class="btn"><span>Pair Code</span></button>
 
-    <div class="input-container">
-      <input id="number" type="number" placeholder="94712345678" />
-      <button id="submit"><span id="submit-text">Submit</span></button>
-    </div>
-
-    <div class="response-area" id="pair"></div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
-    const submitBtn = document.getElementById("submit");
-    const input = document.getElementById("number");
-    const pair = document.getElementById("pair");
-    const submitText = document.getElementById("submit-text");
-
-    async function copyToClipboard(text) {
-      await navigator.clipboard.writeText(text);
-      alert("Code copied: " + text);
-    }
-
-    submitBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const number = input.value.trim().replace(/[^0-9]/g, "");
-
-      if (!number) {
-        pair.innerHTML = `<p class="error">Please enter your number.</p>`;
-        return;
-      }
-
-      if (number.length < 11) {
-        pair.innerHTML = `<p class="error">Invalid number format.</p>`;
-        return;
-      }
-
-      submitBtn.classList.add("loading");
-      submitText.textContent = "Submitting...";
-      pair.innerHTML = `<p>Loading...</p>`;
-
-      try {
-        const res = await axios(`/code?number=${number}`);
-        const code = res.data.code || "Unavailable";
-
-        pair.innerHTML = `
-          <div class="code-box">
-            <span>CODE: ${code}</span>
-            <button class="copy-btn" onclick="copyToClipboard('${code}')">📋 Copy</button>
-          </div>
-        `;
-      } catch (err) {
-        pair.innerHTML = `<p class="error">Something went wrong. Try again later.</p>`;
-      }
-
-      submitBtn.classList.remove("loading");
-      submitText.textContent = "Submit";
-    });
-  </script>
 
 </body>
 </html>
-
